@@ -27,7 +27,7 @@ public class CalculatorService {
             result = determineOperator(num1, num2, operator);
             LOGGER.info("Result determined successfully: {}", result);
         } catch (Exception e) {
-            LOGGER.error("Operator used: {}  was invalid. at runCalculator()", operator);
+            LOGGER.info("Calculator Failed");
         }
 
         return result;
@@ -48,12 +48,8 @@ public class CalculatorService {
                 return calculator.multipyNumbers(num1, num2);
 
             case "/":
-                try {
-                    LOGGER.info("Dividing numbers...");
-                    return calculator.divideNumbers(num1, num2);
-                } catch (NullPointerException e) {
-                    LOGGER.error("Division by zero results in undefined");
-                }
+                LOGGER.info("Dividing numbers...");
+                return calculator.divideNumbers(num1, num2);
 
             case "%":
                 LOGGER.info("Getting the remainder...");
@@ -62,10 +58,10 @@ public class CalculatorService {
             case "^":
                 LOGGER.info("Exponenting numbers...");
                 return calculator.exponentNumbers(num1, num2);
-
             default:
-                LOGGER.error("invalid operator in determineOperator()");
+                LOGGER.error("Operator used: {} is invalid at determineOperator()", operator);
                 throw new Exception();
         }
+
     }
 }

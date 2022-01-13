@@ -13,12 +13,12 @@ public class CalculatorServiceHelper {
     }
 
     public double divideNumbers(double num1, double num2) throws NullPointerException {
-        try {
+        if (num2 == 0) {
+            LOGGER.error("ERROR: divide by zero");
+            throw new ArithmeticException("Error: divide by zero");
+        } else {
             return num1 / num2;
-        } catch (ArithmeticException e) {
-            LOGGER.error("ERROR: Divide by zero");
         }
-        throw new NullPointerException();
     }
 
     public double exponentNumbers(double num1, double num2) {
