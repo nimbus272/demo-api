@@ -1,28 +1,39 @@
 package com.example.demoapi.Service;
 
+import org.slf4j.LoggerFactory;
+
+import org.slf4j.Logger;
+
 public class CalculatorServiceHelper {
 
-    public int addNumbers(int num1, int num2) {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CalculatorServiceHelper.class);
+
+    public double addNumbers(double num1, double num2) {
         return num1 + num2;
     }
 
-    public int divideNumbers(int num1, int num2) {
-        return num1 / num2;
+    public double divideNumbers(double num1, double num2) throws NullPointerException {
+        try {
+            return num1 / num2;
+        } catch (ArithmeticException e) {
+            LOGGER.error("ERROR: Divide by zero");
+        }
+        throw new NullPointerException();
     }
 
-    public int exponentNumbers(int num1, int num2) {
-        return (int) Math.pow((double) num1, (double) num2);
+    public double exponentNumbers(double num1, double num2) {
+        return Math.pow(num1, num2);
     }
 
-    public int multipyNumbers(int num1, int num2) {
+    public double multipyNumbers(double num1, double num2) {
         return num1 * num2;
     }
 
-    public int remainderNumbers(int num1, int num2) {
+    public double remainderNumbers(double num1, double num2) {
         return num1 % num2;
     }
 
-    public int subtractNumbers(int num1, int num2) {
+    public double subtractNumbers(double num1, double num2) {
         return num1 - num2;
     }
 

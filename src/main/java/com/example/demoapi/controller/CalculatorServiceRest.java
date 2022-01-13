@@ -19,7 +19,7 @@ public class CalculatorServiceRest {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/calculator")
-    public int calculator(@RequestBody ObjectNode objectNode) {
+    public double calculator(@RequestBody ObjectNode objectNode) {
         return service.runCalculator(objectNode);
     }
 
