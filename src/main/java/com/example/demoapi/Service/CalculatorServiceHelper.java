@@ -28,7 +28,7 @@ public class CalculatorServiceHelper {
             case "/":
                 MathContext mc = new MathContext(3, RoundingMode.HALF_UP);
                 LOGGER.info("Dividing numbers...");
-                if (num2 == BigDecimal.ZERO) {
+                if (num2.compareTo(BigDecimal.ZERO) == 0) {
                     LOGGER.error("ERROR: divide by zero");
                     throw new ArithmeticException("Error: divide by zero");
                 } else {
