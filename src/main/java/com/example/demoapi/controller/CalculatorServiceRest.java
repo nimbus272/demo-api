@@ -1,5 +1,7 @@
 package com.example.demoapi.controller;
 
+import java.math.BigDecimal;
+
 import com.example.demoapi.Service.CalculatorService;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -19,7 +21,7 @@ public class CalculatorServiceRest {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/calculator")
-    public double calculator(@RequestBody ObjectNode objectNode) {
+    public BigDecimal calculator(@RequestBody ObjectNode objectNode) {
         return service.runCalculator(objectNode);
     }
 
