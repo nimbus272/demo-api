@@ -7,11 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin()
 @RestController
 public class CalculatorServiceRest {
 
@@ -33,7 +35,7 @@ public class CalculatorServiceRest {
             return ResponseHandler.generateResponse("Successfully performed calculation!", HttpStatus.OK,
                     result);
         } catch (NullPointerException e) {
-            LOGGER.error("Error: Null Pointer Exception");
+            LOGGER.error("Error: Null Pointer Exception in RestController");
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
         }
 
